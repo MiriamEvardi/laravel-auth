@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,5 +40,6 @@ Route::middleware(['auth', 'verified'])
 
 
             Route::get('/', [DashbordController::class, 'index'])->name('index');
+            Route::resource('projects', ProjectController::class);
         }
     );
