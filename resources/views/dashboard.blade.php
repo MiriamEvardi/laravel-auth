@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    <h1>Qui sono i tuoi progetti</h1>
-    <a href="{{ route('admin.projects.project') }}">Visualizza i progetti</a>
+    <h1>Accedi per visualizzare i Progetti</h1>
 </div>
 @endsection
