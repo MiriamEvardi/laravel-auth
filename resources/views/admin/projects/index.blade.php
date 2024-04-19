@@ -10,6 +10,7 @@
         @endforeach
     </ul>
 
+    <a href="{{route('admin.projects.create')}}" class="btn btn-primary mt-5">Add new comic</a>
 
 </div>
 @endsection

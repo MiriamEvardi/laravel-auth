@@ -11,7 +11,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'description' => 'required|max:5000',
+            'preview' => 'nullable|max:5000',
+            'technologies' => 'required|max:100',
+            'link' => 'required|max:5000'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => 'Insert :attribute',
+            'max' => 'The field :attribute must contain :max characters'
         ];
     }
 }
