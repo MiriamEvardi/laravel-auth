@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -33,8 +34,13 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $request->validated();
-
         $newProject = new Project();
+
+
+        if ($request->hasFile('preview')) {
+            $path = Storage::disk('public')->put('previews', $request->preview);
+            $newProject->preview = $path;
+        };
 
         $newProject->fill($request->all());
 
@@ -65,6 +71,12 @@ class ProjectController extends Controller
     public function update(StoreProjectRequest $request, Project $project)
     {
         $request->validated();
+
+
+        if ($request->hasFile('preview')) {
+            $path = Storage::disk('public')->put('previews', $request->preview);
+            $project->preview = $path;
+        };
 
         $project->update($request->all());
 

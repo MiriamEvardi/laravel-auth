@@ -20,8 +20,9 @@
         </div>
 
         <div class="mb-3">
-            <label for="preview" class="form-label">Preview</label>
-            <input type="text" class="form-control" id="preview" name="preview" value="{{old('preview')?? $project->preview}}">
+            <img src="{{asset('storage/' . $project->preview)}}" alt="image preview">
+            <label for="preview">Preview</label>
+            <input type="file" class="form-control" name="preview">
         </div>
 
         <div class="mb-3">

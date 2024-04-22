@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="container py-5">
-    <h1>ADD NEW COMIC</h1>
+    <h1>ADD NEW PROJECT</h1>
 
-    <form action="{{route('admin.projects.store')}}" method="POST">
+    <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -18,9 +18,10 @@
             @enderror
         </div>
 
+
         <div class="mb-3">
-            <label for="preview" class="form-label">Preview</label>
-            <input type="text" class="form-control" id="preview" name="preview" value="{{old('preview')}}">
+            <label for="preview">Insert a preview</label>
+            <input type="file" class="form-control" name="preview">
         </div>
 
         <div class="mb-3">
