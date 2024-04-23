@@ -11,7 +11,7 @@ class UpdateTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class UpdateTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'type' => 'required|max:255',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => 'Insert :attribute',
+            'max' => 'The field :attribute must contain :max characters'
         ];
     }
 }

@@ -11,7 +11,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,20 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'description' => 'required|max:5000',
+            'preview' => 'nullable|file|max:1024|mimes:jpg,png,bpm',
+            'technologies' => 'required|max:100',
+            'link' => 'required|max:5000',
+            'type_id' => 'required'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => 'Insert :attribute',
+            'max' => 'The field :attribute must contain :max characters'
         ];
     }
 }

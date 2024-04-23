@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Faker\Guesser\Name;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTypeRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,16 @@ class StoreTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'type' => 'required|max:255',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => 'Insert :attribute',
+            'max' => 'The field :attribute must contain :max characters'
         ];
     }
 }
