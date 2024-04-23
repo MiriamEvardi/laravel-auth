@@ -5,7 +5,7 @@
 <div class="container py-5">
     <h1>EDIT NEW PROJECT</h1>
 
-    <form action="{{route('admin.projects.update', $project->id)}}" method="POST">
+    <form action="{{route('admin.projects.update', $project->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -53,6 +53,17 @@
                 {{$message}}
             </div>
             @enderror
+        </div>
+
+        <div class="mb-4">
+            <label for="type_id">Types</label>
+            <select class="form-select" name="type_id" id="type_id">
+                <option value=""></option>
+                @foreach ($types as $type)
+                <option value="{{$type->id}}" {{ $type->id == old('type_id') ? 'selected' : '' }}>{{ $type->name }}</option>
+                @endforeach
+            </select>
+
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>

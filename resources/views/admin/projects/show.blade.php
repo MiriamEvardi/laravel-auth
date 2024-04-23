@@ -3,6 +3,9 @@
 @section('content')
 <div class="container py-5">
     <h1>{{$project->name}}</h1>
+    <p>({{$project->type->name}})</p>
+
+
     <div class=" text-center image">
         <img src=" {{asset('storage/' . $project->preview)}}" alt="image preview">
     </div>

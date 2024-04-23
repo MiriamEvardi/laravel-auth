@@ -24,9 +24,10 @@ class StoreProjectRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'description' => 'required|max:5000',
-            'preview' => 'nullable|max:5000',
+            'preview' => 'nullable|file|max:1024|mimes:jpg,png,bpm',
             'technologies' => 'required|max:100',
-            'link' => 'required|max:5000'
+            'link' => 'required|max:5000',
+            'type_id' => 'required'
         ];
     }
 

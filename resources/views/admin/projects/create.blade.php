@@ -18,7 +18,6 @@
             @enderror
         </div>
 
-
         <div class="mb-3">
             <label for="preview">Insert a preview</label>
             <input type="file" class="form-control" name="preview">
@@ -52,6 +51,23 @@
                 {{$message}}
             </div>
             @enderror
+        </div>
+
+
+        <div class="mb-4">
+            <label for="type_id">Types</label>
+            <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
+                <option value=""></option>
+                @foreach ($types as $type)
+                <option value="{{$type->id}}" {{ $type->id == old('type_id') ? 'selected' : '' }}>{{ $type->name }}</option>
+                @endforeach
+            </select>
+            @error('type_id')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>
